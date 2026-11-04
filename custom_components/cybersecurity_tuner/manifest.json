@@ -1,0 +1,13 @@
+{
+  "domain": "cybersecurity_tuner",
+  "name": "Cybersecurity Tuner",
+  "codeowners": ["@mar-eid"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/mar-eid/ha-unifi-cs-tuner-integration",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/mar-eid/ha-unifi-cs-tuner-integration/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
