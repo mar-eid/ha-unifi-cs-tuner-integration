@@ -1,0 +1,2 @@
+# Pins Home Assistant 2026.2.3 (the last release line supporting Python 3.13).
+pytest-homeassistant-custom-component==0.13.316

@@ -1,0 +1,114 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Connect to Cybersecurity Tuner",
+        "description": "Enter the address of the Cybersecurity Tuner app and its Home Assistant API token (the app option `ha_api_token`, or the token the app generated in /data/ha_api_token).",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "token": "API token"
+        },
+        "data_description": {
+          "host": "Hostname or IP address of the app, for example local-cybersecurity-tuner.",
+          "port": "Port of the app's Home Assistant API (default 8099).",
+          "token": "Bearer token used to authenticate against the app."
+        }
+      },
+      "hassio_confirm": {
+        "title": "Cybersecurity Tuner app discovered",
+        "description": "Do you want to set up Home Assistant to connect to the Cybersecurity Tuner app at {host}?"
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Cybersecurity Tuner",
+        "description": "The Cybersecurity Tuner app at {host} rejected the API token. Enter the current token.",
+        "data": {
+          "token": "API token"
+        },
+        "data_description": {
+          "token": "Bearer token used to authenticate against the app."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the app.",
+      "invalid_auth": "Invalid API token.",
+      "invalid_response": "The app returned an unexpected response. Is this a Cybersecurity Tuner app?",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This Cybersecurity Tuner app is already configured.",
+      "reauth_successful": "Re-authentication was successful.",
+      "wrong_instance": "The token belongs to a different Cybersecurity Tuner installation.",
+      "cannot_connect": "Failed to connect to the app.",
+      "invalid_auth": "Invalid API token.",
+      "invalid_response": "The app returned an unexpected response.",
+      "invalid_discovery_info": "Invalid discovery information from the Supervisor.",
+      "unknown": "Unexpected error."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling intervals",
+        "data": {
+          "status_interval": "Status interval",
+          "events_interval": "Event interval"
+        },
+        "data_description": {
+          "status_interval": "How often the app status is polled (seconds).",
+          "events_interval": "How often new security events are polled (seconds)."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "healthy": {
+        "name": "Healthy",
+        "state_attributes": {
+          "syslog_mode": { "name": "Syslog mode" },
+          "syslog_healthy": { "name": "Syslog healthy" },
+          "syslog_received": { "name": "Syslog messages received" },
+          "syslog_invalid": { "name": "Syslog messages invalid" },
+          "syslog_dropped": { "name": "Syslog messages dropped" },
+          "syslog_last_message_at": { "name": "Last syslog message" },
+          "unifi_connected": { "name": "UniFi connected" },
+          "unifi_last_sync": { "name": "UniFi last sync" },
+          "unifi_error": { "name": "UniFi error" }
+        }
+      },
+      "learning_active": {
+        "name": "Learning active"
+      },
+      "temporary_exception_active": {
+        "name": "Temporary exception active",
+        "state_attributes": {
+          "temporary_exceptions": { "name": "Temporary exceptions" }
+        }
+      }
+    },
+    "sensor": {
+      "unknown_devices": {
+        "name": "Unknown devices"
+      },
+      "blocked_events_1h": {
+        "name": "Blocked events (1h)"
+      },
+      "last_capture_status": {
+        "name": "Last capture status",
+        "state": {
+          "none": "None",
+          "running": "Running",
+          "completed": "Completed",
+          "failed": "Failed",
+          "stopped": "Stopped"
+        },
+        "state_attributes": {
+          "last_capture_at": { "name": "Last capture" }
+        }
+      }
+    }
+  }
+}

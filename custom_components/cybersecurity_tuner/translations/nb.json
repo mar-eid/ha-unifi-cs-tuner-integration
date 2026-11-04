@@ -1,0 +1,114 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Koble til Cybersecurity Tuner",
+        "description": "Oppgi adressen til Cybersecurity Tuner-appen og API-tokenet for Home Assistant (appvalget `ha_api_token`, eller tokenet appen genererte i /data/ha_api_token).",
+        "data": {
+          "host": "Vert",
+          "port": "Port",
+          "token": "API-token"
+        },
+        "data_description": {
+          "host": "Vertsnavn eller IP-adresse til appen, for eksempel local-cybersecurity-tuner.",
+          "port": "Porten til appens Home Assistant-API (standard 8099).",
+          "token": "Bearer-token som brukes for å autentisere mot appen."
+        }
+      },
+      "hassio_confirm": {
+        "title": "Cybersecurity Tuner-appen ble oppdaget",
+        "description": "Vil du sette opp Home Assistant til å koble til Cybersecurity Tuner-appen på {host}?"
+      },
+      "reauth_confirm": {
+        "title": "Autentiser Cybersecurity Tuner på nytt",
+        "description": "Cybersecurity Tuner-appen på {host} avviste API-tokenet. Oppgi gjeldende token.",
+        "data": {
+          "token": "API-token"
+        },
+        "data_description": {
+          "token": "Bearer-token som brukes for å autentisere mot appen."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke koble til appen.",
+      "invalid_auth": "Ugyldig API-token.",
+      "invalid_response": "Appen svarte uventet. Er dette en Cybersecurity Tuner-app?",
+      "unknown": "Uventet feil."
+    },
+    "abort": {
+      "already_configured": "Denne Cybersecurity Tuner-appen er allerede konfigurert.",
+      "reauth_successful": "Ny autentisering var vellykket.",
+      "wrong_instance": "Tokenet tilhører en annen Cybersecurity Tuner-installasjon.",
+      "cannot_connect": "Kunne ikke koble til appen.",
+      "invalid_auth": "Ugyldig API-token.",
+      "invalid_response": "Appen svarte uventet.",
+      "invalid_discovery_info": "Ugyldig oppdagelsesinformasjon fra Supervisor.",
+      "unknown": "Uventet feil."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Avspørringsintervaller",
+        "data": {
+          "status_interval": "Statusintervall",
+          "events_interval": "Hendelsesintervall"
+        },
+        "data_description": {
+          "status_interval": "Hvor ofte appstatus hentes (sekunder).",
+          "events_interval": "Hvor ofte nye sikkerhetshendelser hentes (sekunder)."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "healthy": {
+        "name": "Frisk",
+        "state_attributes": {
+          "syslog_mode": { "name": "Syslog-modus" },
+          "syslog_healthy": { "name": "Syslog frisk" },
+          "syslog_received": { "name": "Syslog-meldinger mottatt" },
+          "syslog_invalid": { "name": "Ugyldige syslog-meldinger" },
+          "syslog_dropped": { "name": "Forkastede syslog-meldinger" },
+          "syslog_last_message_at": { "name": "Siste syslog-melding" },
+          "unifi_connected": { "name": "UniFi tilkoblet" },
+          "unifi_last_sync": { "name": "Siste UniFi-synkronisering" },
+          "unifi_error": { "name": "UniFi-feil" }
+        }
+      },
+      "learning_active": {
+        "name": "Læring aktiv"
+      },
+      "temporary_exception_active": {
+        "name": "Midlertidig unntak aktivt",
+        "state_attributes": {
+          "temporary_exceptions": { "name": "Midlertidige unntak" }
+        }
+      }
+    },
+    "sensor": {
+      "unknown_devices": {
+        "name": "Ukjente enheter"
+      },
+      "blocked_events_1h": {
+        "name": "Blokkerte hendelser (1t)"
+      },
+      "last_capture_status": {
+        "name": "Status for siste opptak",
+        "state": {
+          "none": "Ingen",
+          "running": "Kjører",
+          "completed": "Fullført",
+          "failed": "Mislyktes",
+          "stopped": "Stoppet"
+        },
+        "state_attributes": {
+          "last_capture_at": { "name": "Siste opptak" }
+        }
+      }
+    }
+  }
+}
